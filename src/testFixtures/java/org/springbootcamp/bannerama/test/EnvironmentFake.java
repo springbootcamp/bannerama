@@ -1,6 +1,7 @@
 package org.springbootcamp.bannerama.test;
 
 import java.util.Map;
+import java.util.Optional;
 import lombok.Builder;
 import lombok.Singular;
 import lombok.Value;
@@ -53,7 +54,7 @@ public class EnvironmentFake implements Environment {
 
   @Override
   public String getProperty(String key, String defaultValue) {
-    throw new UnsupportedOperationException("not implemented");
+    return Optional.ofNullable(properties.get(key)).orElse(defaultValue);
   }
 
   @Override

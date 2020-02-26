@@ -9,7 +9,9 @@ public class ExampleApp {
 
   public static void main(String[] args) {
     SpringApplication app = new SpringApplication(ExampleApp.class);
-    app.setBanner(Bannerama.builder().debug(true).build());
+    app.setBanner(Bannerama.builder()
+      .additionalVersion("Camunda Version", "7.12.0-ee")
+      .build());
 
     app.run(args);
   }

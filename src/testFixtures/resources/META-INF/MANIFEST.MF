@@ -1,0 +1,6 @@
+Specification-Title: JDBC
+Specification-Version: 4.2
+Specification-Vendor: Oracle Corporation
+Implementation-Title: A springbootcamp example application
+Implementation-Version: 0.1.0
+Implementation-Vendor: Oracle

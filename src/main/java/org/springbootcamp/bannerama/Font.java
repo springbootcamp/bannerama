@@ -1,27 +1,27 @@
 package org.springbootcamp.bannerama;
 
-import static com.github.dtmo.jfiglet.FigFontResources.loadFigFontResource;
+import static com.github.dtmo.jfiglet.FigFontResources.BIG_FLF;
+import static com.github.dtmo.jfiglet.FigFontResources.SLANT_FLF;
+import static com.github.dtmo.jfiglet.FigFontResources.SMALL_FLF;
+import static com.github.dtmo.jfiglet.FigFontResources.STANDARD_FLF;
 
-import com.github.dtmo.jfiglet.FigFontResources;
-import com.github.dtmo.jfiglet.FigletRenderer;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 
+/**
+ * Font collection, references {@link com.github.dtmo.jfiglet.FigFontResources}.
+ */
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum Font {
 
-  BIG(FigFontResources.BIG_FLF),
-  STANDARD(FigFontResources.STANDARD_FLF),
+  BIG(BIG_FLF),
+  SLANT(SLANT_FLF),
+  SMALL(SMALL_FLF),
+  STANDARD(STANDARD_FLF),
   ;
 
   @Getter
   private final String flf;
 
-
-  @SneakyThrows
-  public String renderText(String text) {
-    return new FigletRenderer(loadFigFontResource(flf)).renderText(text);
-  }
 }
