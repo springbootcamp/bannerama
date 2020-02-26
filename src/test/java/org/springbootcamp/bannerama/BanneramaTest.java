@@ -29,4 +29,9 @@ class BanneramaTest {
       + "environment=EnvironmentFake{properties={}}\n"
       + "sourceClass=class org.springbootcamp.bannerama.BanneramaTest\n");
   }
+
+  @Test
+  void application_name() {
+    System.out.println(new BannerPrinter(EMPTY, BanneramaTest.class).apply(Bannerama.DEFAULT));
+  }
 }
