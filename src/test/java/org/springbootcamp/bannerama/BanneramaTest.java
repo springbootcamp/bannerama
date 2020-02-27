@@ -18,7 +18,6 @@ class BanneramaTest {
         .build());
 
     assertThat(banner).isEqualTo("\n"
-      + "\n"
       + "  _          _ _                                _     _ \n"
       + " | |        | | |                              | |   | |\n"
       + " | |__   ___| | | ___ ________      _____  _ __| | __| |\n"
@@ -31,13 +30,10 @@ class BanneramaTest {
       + "  > Application Version\t= N/A\n"
       + "  > SpringBoot Version \t= N/A\n"
       + "\n"
-      + "\n"
       + "Debug:\n"
-      + "\tbanner=Bannerama(text=hello-world, title=${application.title}, version=${application.version}, springBootVersion=${spring-boot.version}, additionalVersions={}, font=BIG, debug=true, newLinesAfter=3)\n"
+      + "\tbanner=Bannerama(text=hello-world, title=${application.title}, version=${application.version}, springBootVersion=${spring-boot.version}, additionalVersions={}, font=BIG, debug=true, newLinesAfter=1)\n"
       + "\tenvironment=EnvironmentFake{properties={}}\n"
       + "\tsourceClass=class org.springbootcamp.bannerama.BanneramaTest\n"
-      + "\n"
-      + "\n"
       + "\n");
   }
 
