@@ -10,6 +10,7 @@ public class ExampleApp {
   public static void main(String[] args) {
     SpringApplication app = new SpringApplication(ExampleApp.class);
     app.setBanner(Bannerama.builder()
+      .title("The spring boot banner example app")
       .additionalVersion("Camunda Version", "7.12.0-ee")
       .build());
 

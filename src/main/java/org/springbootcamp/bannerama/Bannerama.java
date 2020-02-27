@@ -1,15 +1,6 @@
 package org.springbootcamp.bannerama;
 
-import static com.github.dtmo.jfiglet.FigFontResources.loadFigFontResource;
-import static org.springbootcamp.bannerama.Bannerama.PlaceHolders.APPLICATION_NAME;
-import static org.springbootcamp.bannerama.Bannerama.PlaceHolders.MANIFEST_TITLE;
-import static org.springbootcamp.bannerama.Bannerama.PlaceHolders.MANIFEST_VERSION;
-import static org.springbootcamp.bannerama.Bannerama.PlaceHolders.SPRINGBOOT_VERSION;
-
 import com.github.dtmo.jfiglet.FigletRenderer;
-import java.io.PrintStream;
-import java.util.Map;
-import java.util.Optional;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.NonNull;
@@ -20,12 +11,21 @@ import lombok.Value;
 import org.springframework.boot.Banner;
 import org.springframework.core.env.Environment;
 
+import java.io.PrintStream;
+import java.util.Map;
+import java.util.Optional;
+
+import static com.github.dtmo.jfiglet.FigFontResources.loadFigFontResource;
+import static org.springbootcamp.bannerama.Bannerama.PlaceHolders.APPLICATION_NAME;
+import static org.springbootcamp.bannerama.Bannerama.PlaceHolders.MANIFEST_TITLE;
+import static org.springbootcamp.bannerama.Bannerama.PlaceHolders.MANIFEST_VERSION;
+import static org.springbootcamp.bannerama.Bannerama.PlaceHolders.SPRINGBOOT_VERSION;
+
 //  ${application.formatted-version}	The version number of your application, as declared in MANIFEST.MF and formatted for display
 
 @Value
 @Builder
 public class Bannerama implements Banner {
-
 
   public static final Bannerama DEFAULT = Bannerama.builder().build();
 
@@ -57,7 +57,7 @@ public class Bannerama implements Banner {
   private boolean debug = false;
 
   @Default
-  private int newLinesAfter = 3;
+  private int newLinesAfter = 1;
 
   @Override
   @SneakyThrows
@@ -79,15 +79,15 @@ public class Bannerama implements Banner {
     private final PrintStream out;
 
     Worker before() {
-      return newLines(2);
+      return newLines(1);
     }
 
     @SneakyThrows
     Worker banner() {
       return println(new FigletRenderer(loadFigFontResource(font.getFlf())).renderText(
-          resolveString(text, sourceClass.getSimpleName().toLowerCase())
-        ))
-        .println(resolveString(title, null))
+        resolveString(text, sourceClass.getSimpleName().toLowerCase())
+      ))
+        .println(Optional.ofNullable(resolveString(title)).map(it -> "  :: " + it + "  ::").orElse(null))
         .newLines(1);
     }
 
@@ -97,9 +97,8 @@ public class Bannerama implements Banner {
 
       additionalVersions.forEach((label, value) -> printVersion(label, value, "N/A"));
 
-      return newLines(1);
+      return this;
     }
-
 
     Worker printVersion(String label, String value, String defaultValue) {
       return println(String.format(
@@ -140,6 +139,10 @@ public class Bannerama implements Banner {
         }
       }
       return this;
+    }
+
+    private String resolveString(String value) {
+      return resolveString(value, null);
     }
 
     private String resolveString(String value, String defaultValue) {
