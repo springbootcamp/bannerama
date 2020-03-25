@@ -5,6 +5,8 @@ import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.function.Function;
+
+import lombok.NonNull;
 import lombok.SneakyThrows;
 import lombok.Value;
 import org.springframework.boot.Banner;
@@ -15,8 +17,11 @@ public class BannerPrinter implements Function<Banner, String> {
 
   private static final Charset CHARSET = StandardCharsets.UTF_8;
 
-  private final Environment environment;
-  private Class<?> sourceClass;
+  @NonNull
+  Environment environment;
+
+  @NonNull
+  Class<?> sourceClass;
 
   @Override
   @SneakyThrows
