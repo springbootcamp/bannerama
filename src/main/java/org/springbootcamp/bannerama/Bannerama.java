@@ -30,34 +30,29 @@ public class Bannerama implements Banner {
   public static final Bannerama DEFAULT = Bannerama.builder().build();
 
   @Default
-  @NonNull
-  private String text = APPLICATION_NAME;
+  @NonNull String text = APPLICATION_NAME;
 
   @Default
-  @NonNull
-  private String title = MANIFEST_TITLE;
+  @NonNull String title = MANIFEST_TITLE;
 
   @Default
-  @NonNull
-  private String version = MANIFEST_VERSION;
+  @NonNull String version = MANIFEST_VERSION;
 
   @Default
-  @NonNull
-  private String springBootVersion = SPRINGBOOT_VERSION;
+  @NonNull String springBootVersion = SPRINGBOOT_VERSION;
 
   @NonNull
   @Singular
-  private Map<String, String> additionalVersions;
+  Map<String, String> additionalVersions;
 
   @Default
-  @NonNull
-  private Font font = Font.STANDARD;
+  @NonNull Font font = Font.STANDARD;
 
   @Default
-  private boolean debug = false;
+  boolean debug = false;
 
   @Default
-  private int newLinesAfter = 1;
+  int newLinesAfter = 1;
 
   @Override
   @SneakyThrows
